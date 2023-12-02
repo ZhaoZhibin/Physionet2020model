@@ -149,7 +149,7 @@ def load_labels(label_files, normal_class, equivalent_classes_collection):
     for i in range(num_recordings):
         with open(label_files[i], 'r') as f:
             for l in f:
-                if l.startswith('#Dx'):
+                if l.startswith('# Dx'):
                     dxs = set(arr.strip() for arr in l.split(': ')[1].split(','))
                     tmp_labels.append(dxs)
 

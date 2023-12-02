@@ -78,13 +78,13 @@ def prepare_data(age, gender):
     
 def read_ag(header_data):
     for lines in header_data:
-        if lines.startswith('#Age'):
+        if lines.startswith('# Age'):
             tmp = lines.split(': ')[1].strip()
             if tmp == 'NaN':
                 age = -1
             else:
                 age = int(tmp)
-        if lines.startswith('#Sex'):
+        if lines.startswith('# Sex'):
             tmp = lines.split(': ')[1].strip()
             if tmp == 'NaN':
                 gender = 'Unknown'

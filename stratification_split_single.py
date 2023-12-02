@@ -23,7 +23,7 @@ def get_class_pair(input_directory_name, CT_codes_all, files, class_df):
         flag = 1
         with open(input_file_name, 'r') as f:
             for lines in f:
-                if lines.startswith('#Dx'):
+                if lines.startswith('# Dx'):
                     tmp = lines.split(': ')[1].split(',')
                     tmp = [c.strip() for c in tmp]
                     if len(list(set(tmp).intersection(set(CT_codes_all)))) == 0:
@@ -36,19 +36,19 @@ def get_class_pair(input_directory_name, CT_codes_all, files, class_df):
                     if k == 0:
                         tmp = lines.split(' ')[2].strip()
                         class_df.loc[i, 'fs'] = int(tmp)
-                    if lines.startswith('#Age'):
+                    if lines.startswith('# Age'):
                         tmp = lines.split(': ')[1].strip()
                         if tmp == 'NaN':
                             class_df.loc[i, 'age'] = -1
                         else:
                             class_df.loc[i, 'age'] = int(tmp)
-                    if lines.startswith('#Sex'):
+                    if lines.startswith('# Sex'):
                         tmp = lines.split(': ')[1].strip()
                         if tmp == 'NaN':
                             class_df.loc[i, 'gender'] = 'Unknown'
                         else:
                             class_df.loc[i, 'gender'] = tmp
-                    if lines.startswith('#Dx'):
+                    if lines.startswith('# Dx'):
                         tmp = lines.split(': ')[1].split(',')
                         for c in tmp:
                             c = c.strip()
